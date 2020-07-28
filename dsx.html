@@ -3,136 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>asdas</title>
+    <title>dsx专属</title>
     <style>
-        #particles-js {
+        html {
+            height:100%;
+            background:#63D0FF;
+        }
+
+        body{
+            margin:0;
+            padding:0;
+            background:#63D0FF;
+            height:100%;
+        }
+
+        #wrapper {
+            position:relative;
+            width:100%;
+            height:100%;
+        }
+
+        #clouds{
+            background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/56901/bg-clouds2-tinypng.png") repeat-x 0 bottom #ACE6FF;
+            width:100%;
+            height:230px; /*190px*/
+            min-height:230px;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:1;
+            -webkit-transform:translate3d(0,0,0.01);
+            transform:translate3d(0,0,0.01);
+        }
+
+        #ground {
+            background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/56901/grass_tile-tinypng.png") repeat-x 0 0 transparent;
             position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index:2;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(117, 114, 113, 0.8) 10%, rgba(40, 49, 77, 0.8) 30%, rgba(29, 35, 71, 0.8) 50%, rgba(19, 25, 28, 0.8) 80%, rgba(15, 14, 14, .8) 100%), url(https://38.media.tumblr.com/tumblr_m00c3czJkM1qbukryo1_500.gif);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 50% 50%;
+            height: 192px;
+            min-height:192px;
+            border:0 none transparent;
+            outline:0 none transparent;
+            -webkit-transform:translate3d(0,0,0.01);
+            transform:translate3d(0,0,0.01);
+            will-change: transform;
         }
 
     </style>
 
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 400,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "image",
-                    "stroke": {
-                        "width": 3,
-                        "color": "#fff"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    },
-                    "image": {
-                        "src": "http://www.dynamicdigital.us/wp-content/uploads/2013/02/starburst_white_300_drop_2.png",
-                        "width": 100,
-                        "height": 100
-                    }
-                },
-                "opacity": {
-                    "value": 0.7,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 5,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 20,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": false,
-                    "distance": 50,
-                    "color": "#ffffff",
-                    "opacity": 0.6,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 5,
-                    "direction": "bottom",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": true,
-                        "rotateX": 300,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode":  "bubble"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 150,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 200,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.2
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
+    <script type="text/javascript" src="particles.js">
+        document.addEventListener("DOMContentLoaded", function(event) {
+
+            function ground() {
+
+                var tl = new TimelineMax({
+                    repeat: -1
+                });
+
+                tl.to("#ground", 20, {
+                    backgroundPosition: "1301px 0px",
+                    force3D:true,
+                    rotation:0.01,
+                    z:0.01,
+                    autoRound:false,
+                    ease: Linear.easeNone
+                });
+
+                return tl;
+            }
+
+            function clouds() {
+
+                var tl = new TimelineMax({
+                    repeat: -1
+                });
+
+                tl.to("#clouds", 52, {
+                    backgroundPosition: "-2247px bottom",
+                    force3D:true,
+                    rotation:0.01,
+                    z:0.01,
+                    //autoRound:false,
+                    ease: Linear.easeNone
+                });
+
+                return tl;
+            }
+
+            var masterTL = new TimelineMax({
+                repeat: -1
+            });
+
+            // window load event makes sure image is
+// loaded before running animation
+            window.onload = function() {
+
+                masterTL
+                    .add(ground(),0)
+                    .add(clouds(),0)
+                    .timeScale(0.7)
+                    .progress(1).progress(0)
+                    .play();
+
+            };
+
         });
     </script>
 </head>
 <body>
 <div id="wrapper">
-    <div id="particles-js"></div>
+    <div id="clouds"></div>
+    <div id="ground"></div>
     <audio autoplay="autoplay" loop="-1"><source src="Angel.mp3"></audio>
 </div>
 </body>
