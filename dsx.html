@@ -1,60 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dsx专属</title>
-    <link rel="stylesheet" href="style.css">
-    <style type="text/css">
-        body {
-            /*background: url(girl_xk.jpg) no-repeat;*/
-            overflow:hidden;
+    <meta charset="utf-8">
+    <title>献给dsx</title>
+
+    <link rel="stylesheet" href="YlSidler.css">
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery.Yl.Slide.min.js"></script>
+    <script>
+        $(function () {
+            $('.Yl-container').YlSlide({
+                wrapper: '.Yl-wrapper',
+                slideClass: '.Yl-slide',
+                stylePrefix: '.Yl-',
+                slideLength: 3,
+                pages: true,
+                pagination: '.Yl-pagination',
+                pagingSelect: '.Yl-pagination-bullet-active',
+                autoplay: 10000,
+                imgTemplate: {
+                    0: ['<div class="Yl-img0"></div>'],
+                    1: ['<div class="Yl-img1"></div>'],
+                    2: ['<div class="Yl-img2"></div>']
+                },
+                fontTemplate: {
+                    0: ['<div class="Yl-font0">dsx.</div>', '<div class="Yl-font1">绝代有佳人，幽居在空谷</div>', '<div class="Yl-font2">代思雪</div>'],
+                    1: ['<div class="Yl-font0">dsx.</div>', '<div class="Yl-font1">愿君多采撷，此物最相思</div>', '<div class="Yl-font2">代思雪</div>'],
+                    2: ['<div class="Yl-font0">dsx.</div>', '<div class="Yl-font1">最美不是下雪天，而是和你一起路过的白色街边</div>', '<div class="Yl-font2">代思雪</div>']
+                },
+                fontAnimationMode: {
+                    0: ['fadeInUp', 'fadeInUp', 'slideInLeft'],
+                    1: ['fadeInUp', 'fadeInUp', 'slideInLeft'],
+                    2: ['fadeInUp', 'fadeInUp', 'slideInLeft']
+                },
+                customTemplate: {
+                    // 0:['<div class="Yl-Button"><a href="javascript:void(0);">查看详情</a></div>'],
+                    // 1:['<div class="Yl-Button"><a href="javascript:void(0);">查看详情</a></div>'],
+                    // 2:['<div class="Yl-Button"><a href="javascript:void(0);">查看详情</a></div>']
+                },
+                callback: function (e) {
+                    //整个dom加载完成后的回调函数、切换动画前的回调
+                },
+                before: function (e) {
+                    //页面切换前的回调函数
+                },
+                after: function (e) {
+                    //页面切换完成后的回调函数
+                    console.log(e)
+                    if (e.index === 2) {
+
+                        setInterval(toPage, 6000)
+                    }
+                },
+
+
+            });
+        });
+
+        function toPage() {
+            window.location.href = "http://www.mochao.club/dsx"
         }
-
-        .snow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 100001;
-        }
-
-        #shi {
-            font-size: 25px;
-            color: #09F;
-            height: 25px;
-            font-weight: bold;
-            width: 500px;
-        }
-
-        .text-content{
-            z-index: 2;
-            background: blue;
-            width: 200px;
-            height: auto;
-        }
-        .text-content h1{
-            color: white;
-        }
-    </style>
-    <script type="text/javascript" src="jquery_jquery-1.7.2.js"></script>
-    <script src="winter_templets_xq_js_snowy.js"></script>
-
-<script type="text/javascript">
-
-
-</script>
+    </script>
 
 </head>
 <body>
-<div id="wrapper">
-    <img src="girl_xk.jpg" style="max-width: 100%">
 
-    <div class="snow-container">
-    </div>
-    <embed src="Angel2.mp3" autostart="true" loop="true" hidden="true"/>
+<div class="sun_banner">
+    <div class="Yl-container"></div>
 </div>
 </body>
 </html>
