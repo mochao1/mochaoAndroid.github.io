@@ -49,14 +49,18 @@
                     //页面切换完成后的回调函数
                     console.log(e)
                     if (e.index === 2) {
-                        window.location.href = "http://www.mochao.club/dsx"
-                        e.pause()
+
+                        setInterval(toPage, 6000)
                     }
                 },
 
 
             });
         });
+
+        function toPage() {
+            window.location.href = "http://www.mochao.club/dsx"
+        }
     </script>
 
 </head>
