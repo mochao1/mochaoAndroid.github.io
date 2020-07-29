@@ -1,14 +1,14 @@
 /* 全局 */
 .sun_banner{
 	width:100%;
-	height:1080px;
+	height:1280px;
 	background: -webkit-linear-gradient(#25252D, #515263); /* Safari 5.1 - 6.0 */
 	background: -o-linear-gradient(#25252D, #515263); /* Opera 11.1 - 12.0 */
 	background: -moz-linear-gradient(#25252D, #515263); /* Firefox 3.6 - 15 */
 	background: linear-gradient(#25252D, #515263); /* 标准的语法 */
 }
 
-.Yl-container{width:100%; height:1080px; overflow:hidden; position:relative;}
+.Yl-container{width:100%; height:1280px; overflow:hidden; position:relative;}
 .Yl-container .Yl-wrapper{ width: 100%; height: 100%; overflow: hidden;position:relative;}
 .Yl-container .Yl-wrapper i{list-style:none; font-style:normal;}
 .Yl-container .Yl-wrapper .Yl-slide{ width: 100%; height: 100%; overflow: hidden; position:absolute; display: none;}
